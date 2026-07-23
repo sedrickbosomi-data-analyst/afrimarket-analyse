@@ -4,6 +4,8 @@ Thème : bleu de nuit (surface), orange & vert-citron (accents), palette
 catégorielle validée accessibilité (CVD-safe) — voir le rapport de
 validation dans le commentaire en bas de fichier.
 """
+from pathlib import Path
+
 import pandas as pd
 import numpy as np
 import plotly.express as px
@@ -12,7 +14,7 @@ import streamlit as st
 
 st.set_page_config(page_title="AfriMarket — Dashboard Stratégique", page_icon="🛍️", layout="wide")
 
-DATA_PATH = "../data/df_features.csv"
+DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "df_features.csv"
 
 # ------------------------------------------------------------------
 # Thème — palette validée (voir palette-check en bas de fichier)
