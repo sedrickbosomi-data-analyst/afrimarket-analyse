@@ -4,7 +4,7 @@
 une entreprise e-commerce panafricaine (Électronique, Mode, Beauté, Maison). Dataset brut
 volontairement bruité (doublons, incohérences, valeurs aberrantes) pour simuler un cas réel.
 
-**🔗 Dashboard en ligne :** _à venir une fois déployé sur Streamlit Community Cloud_
+**🔗 Dashboard en ligne :** https://afrimarket-analyse.streamlit.app/
 
 ## Livrables
 
