@@ -169,28 +169,25 @@ def load_data():
 df = load_data()
 
 # ------------------------------------------------------------------
-# Filtres — Mois en barre latérale ; Catégorie/Canal/Ville en pastilles
-# colorées (assorties aux graphiques) dans la page principale, plus large.
+# Filtres — Mois/Catégorie/Canal en barre latérale (compacts, pour laisser
+# les KPI respirer) ; Ville en pastilles colorées (assorties aux graphiques
+# de l'onglet Géographie) dans la page principale, plus large.
 # ------------------------------------------------------------------
+categories_options = [c for c in CATEGORIE_ORDER if c in df["categorie"].unique()]
+canaux_options = [c for c in CANAL_ORDER if c in df["canal_marketing"].unique()]
+villes_options = [v for v in VILLE_ORDER if v in df["ville"].unique()]
+
 st.sidebar.header("Filtres")
 mois_options = sorted(df["mois"].unique())
 mois_sel = st.sidebar.multiselect("Mois", mois_options, default=mois_options)
+categories_sel = st.sidebar.multiselect("Catégorie", categories_options, default=categories_options)
+canaux_sel = st.sidebar.multiselect("Canal marketing", canaux_options, default=canaux_options)
 
 st.markdown(
     """<div class="hero"><h1>🛍️ AfriMarket — Dashboard Stratégique</h1>
     <p>6 mois d'activité e-commerce — Électronique · Mode · Beauté · Maison</p></div>""",
     unsafe_allow_html=True,
 )
-
-categories_options = [c for c in CATEGORIE_ORDER if c in df["categorie"].unique()]
-canaux_options = [c for c in CANAL_ORDER if c in df["canal_marketing"].unique()]
-villes_options = [v for v in VILLE_ORDER if v in df["ville"].unique()]
-
-st.markdown('<p class="filter-label">Catégorie</p>', unsafe_allow_html=True)
-categories_sel = chip_filter(categories_options, [CATEGORIE_COLOR[c] for c in categories_options], "chip_cat")
-
-st.markdown('<p class="filter-label">Canal marketing</p>', unsafe_allow_html=True)
-canaux_sel = chip_filter(canaux_options, [CANAL_COLOR[c] for c in canaux_options], "chip_canal")
 
 st.markdown('<p class="filter-label">Ville</p>', unsafe_allow_html=True)
 villes_sel = chip_filter(villes_options, [VILLE_COLOR[v] for v in villes_options], "chip_ville")
